@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 public class UserDaoImp implements UserDao {
    private static final Logger logger = Logger.getLogger(UserDaoImp.class.getName());
 
-
    @Autowired
    private SessionFactory sessionFactory;
 
@@ -34,7 +33,6 @@ public class UserDaoImp implements UserDao {
 
    @Override
    public User getUserByCar(String model, int series) {
-
       Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.userCar.model=:paramName and u.userCar.series=:paramName2");
       query.setParameter("paramName", model);
       query.setParameter("paramName2", series);
