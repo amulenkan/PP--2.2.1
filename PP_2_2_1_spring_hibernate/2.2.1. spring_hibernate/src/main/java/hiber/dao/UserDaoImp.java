@@ -2,6 +2,7 @@ package hiber.dao;
 
 import hiber.model.Car;
 import hiber.model.User;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,14 +38,16 @@ public class UserDaoImp implements UserDao {
    public User getUserByCar(String model, int series) {
 
       Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.userCar.model=:paramName and u.userCar.series=:paramName2");
-
       query.setParameter("paramName", model);
       query.setParameter("paramName2", series);
-      Object result = query.getSingleResult();
-      if (result == null) {
-         return null;
+      Object result = null;
+      try {
+         result = query.getSingleResult();
+      } catch (NoResultException e) {
+         logger.log(Level.INFO, "Владелец автомобиля {0} серии {1} не найден", new Object[]{model, series});
       }
-      logger.log(Level.INFO, "Владелец автомобиля {0} серии {1} : {2}", new Object[] {model, series, result});
+
+      logger.log(Level.INFO, "Владелец автомобиля {0} серии {1} : {2}", new Object[]{model, series, result});
       return (User) result;
 
    }

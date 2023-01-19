@@ -23,18 +23,19 @@ public class MainApp {
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
 
       User user1 = new User("Ivan", "Ivanov", "ivan@mail.ru");
-      Car car1 = new Car("Toyota", 123);
-      user1.setUserCar(car1);
-      userService.add(user1);
-
       User user2 = new User("Petr", "Petrov", "petr@mail.ru");
-      Car car2 = new Car("KIA", 235);
-      user2.setUserCar(car2);
-      userService.add(user2);
-
       User user3 = new User("Maria", "Sidorova", "maria@mail.ru");
+
+      Car car1 = new Car("Toyota", 123);
+      Car car2 = new Car("KIA", 235);
       Car car3 = new Car("Volvo", 862);
+
+      user1.setUserCar(car1);
+      user2.setUserCar(car2);
       user3.setUserCar(car3);
+
+      userService.add(user1);
+      userService.add(user2);
       userService.add(user3);
 
       userService.getUserByCar("Volvo", 862);
