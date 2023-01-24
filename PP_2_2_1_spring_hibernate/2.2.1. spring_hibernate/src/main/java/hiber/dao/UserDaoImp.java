@@ -1,7 +1,7 @@
 package hiber.dao;
 
-import hiber.model.Car;
-import hiber.model.User;
+import hiber.models.Car;
+import hiber.models.User;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import org.hibernate.SessionFactory;

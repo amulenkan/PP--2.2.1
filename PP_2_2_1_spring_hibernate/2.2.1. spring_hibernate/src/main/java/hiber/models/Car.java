@@ -1,4 +1,4 @@
-package hiber.model;
+package hiber.models;
 
 import jakarta.persistence.*;
 
@@ -12,8 +12,6 @@ public class Car {
     private String model;
     @Column(name = "series")
     private int series;
-    @OneToOne(mappedBy = "userCar")
-    private User user;
 
     public Car() {}
 
