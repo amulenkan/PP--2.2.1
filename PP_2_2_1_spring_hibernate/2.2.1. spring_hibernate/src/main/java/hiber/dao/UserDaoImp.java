@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 @Repository
 public class UserDaoImp implements UserDao {
+
    private static final Logger logger = Logger.getLogger(UserDaoImp.class.getName());
 
    @Autowired
